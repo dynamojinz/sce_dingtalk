@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <record model="res.groups" id="dingtalk_admin">
+            <field name="name">Dingtalk Plugin / Administrator</field>
+        </record>
+    </data>
+</odoo>

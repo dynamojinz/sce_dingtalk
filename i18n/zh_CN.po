@@ -1,0 +1,255 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sce_dingtalk
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-17 03:20+0000\n"
+"PO-Revision-Date: 2018-07-17 11:24+0800\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.8\n"
+"Last-Translator: \n"
+"Language: zh\n"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_qrcode_image
+msgid "2-dimention code"
+msgstr "2维码"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_agentid
+msgid "Agentid"
+msgstr ""
+
+#. module: sce_dingtalk
+#: code:addons/sce_dingtalk/controllers/controllers.py:25
+#, python-format
+msgid "Cannot get uid from dingtalk."
+msgstr "从钉钉获取用户ID失败。"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_config_id
+msgid "Config"
+msgstr "设置"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_corpid
+msgid "Corpid"
+msgstr ""
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_corpsecret
+msgid "Corpsecret"
+msgstr ""
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_create_uid
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_create_uid
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_mixin_create_uid
+msgid "Created by"
+msgstr "创建者"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_create_date
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_create_date
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_mixin_create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_data
+msgid "Data"
+msgstr "数据"
+
+#. module: sce_dingtalk
+#: model:ir.ui.menu,name:sce_dingtalk.menu_root
+msgid "Dingtalk"
+msgstr "钉钉"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_res_users_oauth_dingtalk_code
+msgid "Dingtalk OAuth Code"
+msgstr "钉钉单点临时码"
+
+#. module: sce_dingtalk
+#: model:res.groups,name:sce_dingtalk.dingtalk_admin
+msgid "Dingtalk Plugin / Administrator"
+msgstr "钉钉插件 / 管理员"
+
+#. module: sce_dingtalk
+#: code:addons/sce_dingtalk/controllers/controllers.py:34
+#, python-format
+msgid "Dingtalk client signin faild, please contact administrator."
+msgstr "钉钉客户端登录失败，请联系管理员。"
+
+#. module: sce_dingtalk
+#: model:ir.ui.menu,name:sce_dingtalk.config
+msgid "Dingtalk config"
+msgstr "钉钉设置"
+
+#. module: sce_dingtalk
+#: model:ir.ui.menu,name:sce_dingtalk.logs
+msgid "Dingtalk logs"
+msgstr "钉钉日志"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_display_name
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_display_name
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_mixin_display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_id
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_id
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_mixin_id
+msgid "ID"
+msgstr "序号"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_is_master
+msgid "Is Master"
+msgstr "默认设置"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config___last_update
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log___last_update
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_mixin___last_update
+msgid "Last Modified on"
+msgstr "最新修改时间"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_write_uid
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_write_uid
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_mixin_write_uid
+msgid "Last Updated by"
+msgstr "最新修改人"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_write_date
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_write_date
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_mixin_write_date
+msgid "Last Updated on"
+msgstr "最新更新时间"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_linkurl_format
+msgid "Linkurl Format"
+msgstr "单点连接URL"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_log_ids
+msgid "Log"
+msgstr "日志"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_name
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_name
+msgid "Name"
+msgstr "名称"
+
+#. module: sce_dingtalk
+#: code:addons/sce_dingtalk/controllers/controllers.py:29
+#, python-format
+msgid "Not registed user, please contact administrator."
+msgstr "该用户未在目标系统中注册，请联系管理员。"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_res_model_id
+msgid "Related Model"
+msgstr "关联模型"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_request
+msgid "Request"
+msgstr "请求"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_res_model
+msgid "Resource Model"
+msgstr "关联模型"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_log_response
+msgid "Response"
+msgstr "回复"
+
+#. module: sce_dingtalk
+#: model:ir.actions.act_window,name:sce_dingtalk.action_window
+msgid "SCE Dingtalk Configuration"
+msgstr "钉钉集成配置"
+
+#. module: sce_dingtalk
+#: model:ir.actions.act_window,name:sce_dingtalk.action_window_logs
+msgid "SCE Dingtalk Logs"
+msgstr "钉钉接口日志"
+
+#. module: sce_dingtalk
+#: model:ir.ui.view,arch_db:sce_dingtalk.form
+#: model:ir.ui.view,arch_db:sce_dingtalk.form_2_dim_code
+msgid "Send test message?"
+msgstr "是否发送测试消息？"
+
+#. module: sce_dingtalk
+#: model:ir.ui.view,arch_db:sce_dingtalk.form
+#: model:ir.ui.view,arch_db:sce_dingtalk.form_2_dim_code
+msgid "Test Message"
+msgstr "测试消息发送"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_test_user
+msgid "Test User"
+msgstr "测试用户名"
+
+#. module: sce_dingtalk
+#: code:addons/sce_dingtalk/models/models.py:75
+#, python-format
+msgid "Test message from SCE corporation at %s"
+msgstr "钉钉测试消息，发送时间： %s"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,help:sce_dingtalk.field_sce_dingtalk_config_qrcode_image
+msgid "This field holds 2-dimention code of dingtalk plugin"
+msgstr "钉钉插件二维码"
+
+#. module: sce_dingtalk
+#: model:ir.model.fields,field_description:sce_dingtalk.field_sce_dingtalk_config_token
+msgid "Token"
+msgstr "口令"
+
+#. module: sce_dingtalk
+#: model:ir.model,name:sce_dingtalk.model_res_users
+msgid "Users"
+msgstr "用户"
+
+#. module: sce_dingtalk
+#: code:addons/sce_dingtalk/models/models.py:120
+#, python-format
+msgid "View Details"
+msgstr "查看详情"
+
+#. module: sce_dingtalk
+#: model:ir.model,name:sce_dingtalk.model_sce_dingtalk_config
+msgid "sce_dingtalk.config"
+msgstr "钉钉设置"
+
+#. module: sce_dingtalk
+#: model:ir.model,name:sce_dingtalk.model_sce_dingtalk_log
+msgid "sce_dingtalk.log"
+msgstr "钉钉日志"
+
+#. module: sce_dingtalk
+#: model:ir.model,name:sce_dingtalk.model_sce_dingtalk_mixin
+msgid "sce_dingtalk.mixin"
+msgstr "钉钉mixin"
+
+#. module: sce_dingtalk
+#: model:ir.ui.view,arch_db:sce_dingtalk.form_2_dim_code
+msgid "用钉钉扫描以下二维码，手机端接收系统通知。"
+msgstr ""

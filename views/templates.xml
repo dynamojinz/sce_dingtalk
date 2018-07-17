@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <template id="oauth_script">
+            <script src="http://g.alicdn.com/dingding/dingtalk-jsapi/2.0.48/dingtalk.open.js"></script>
+            <script>
+            dd.ready(function() {
+                dd.runtime.permission.requestAuthCode({
+                    corpId: "<t t-esc='corpId'/>",
+                    onSuccess: function(result) {
+                        var code = result.code;
+                        window.location.href = window.location.href+"&amp;code="+code;
+                    },
+                    onFail: function(err){
+                        alert(JSON.stringify(err));
+                    }
+                });
+            });
+            </script>
+        </template>
+         <!--<template id="object"> -->
+           <!--<h1><t t-esc="object.display_name"/></h1> -->
+           <!--<dl> -->
+             <!--<t t-foreach="object._fields" t-as="field"> -->
+               <!--<dt><t t-esc="field"/></dt> -->
+               <!--<dd><t t-esc="object[field]"/></dd> -->
+             <!--</t> -->
+           <!--</dl> -->
+         <!--</template> -->
+    </data>
+</odoo>

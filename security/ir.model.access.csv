@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sce_dingtalk_config,sce_dingtalk.config,model_sce_dingtalk_config,,1,0,0,0
+access_sce_dingtalk_log,sce_dingtalk.log,model_sce_dingtalk_log,,1,0,0,0

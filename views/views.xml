@@ -1,0 +1,143 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="sce_dingtalk.list">
+      <field name="name">Dingtalk config list</field>
+      <field name="model">sce_dingtalk.config</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="corpid"/>
+          <field name="corpsecret"/>
+          <field name="agentid"/>
+          <field name="is_master"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sce_dingtalk.form">
+        <field name="name">Dingtalk Form</field>
+        <field name="model">sce_dingtalk.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test" type="object" string="Test Message" class="oe_button" confirm="Send test message?"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="is_master"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="res_model_id"/>
+                        </group>
+                        <group>
+                            <field name="res_model"/>
+                        </group>
+                    </group>
+                    <group>
+                            <field name="linkurl_format"/>
+                    </group>
+                    <group>
+                        <field name="corpid"/>
+                        <field name="corpsecret"/>
+                        <field name="token"/>
+                        <field name="agentid"/>
+                            <field name="test_user"/>
+                    </group>
+                    <group>
+                        <field name="qrcode_image" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sce_dingtalk.form_2_dim_code">
+        <field name="name">Dingtalk 2 Dimention Code</field>
+        <field name="model">sce_dingtalk.config</field>
+        <field name="arch" type="xml">
+            <form edit="false" create="false">
+                <div style="text-align:center">
+                    <div>用钉钉扫描以下二维码，手机端接收系统通知。</div>
+                    <button name="action_test" type="object" string="Test Message" class="oe_button" confirm="Send test message?"/>
+                    <div>
+                        <field name="qrcode_image" widget="image"/>
+                    </div>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sce_dingtalk.list_log">
+      <field name="name">Dingtalk Logs</field>
+      <field name="model">sce_dingtalk.log</field>
+      <field name="arch" type="xml">
+        <tree default_order="create_date desc">
+          <field name="name"/>
+          <field name="create_date"/>
+          <field name="data"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sce_dingtalk.form_log">
+      <field name="name">Dingtalk Logs Form</field>
+      <field name="model">sce_dingtalk.log</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+              <field name="name"/>
+              <field name="request"/>
+              <field name="data"/>
+              <field name="response"/>
+              <field name="create_date"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="sce_dingtalk.action_window">
+      <field name="name">SCE Dingtalk Configuration</field>
+      <field name="res_model">sce_dingtalk.config</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'form_view_ref':'sce_dingtalk.form'}</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="sce_dingtalk.action_window_logs">
+      <field name="name">SCE Dingtalk Logs</field>
+      <field name="res_model">sce_dingtalk.log</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="sce_sso.action_server">
+      <field name="name">sce_sso server</field>
+      <field name="model_id" ref="model_sce_sso_sce_sso"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <menuitem name="Dingtalk" id="sce_dingtalk.menu_root" groups="sce_dingtalk.dingtalk_admin"/>
+    <!-- menu categories -->
+    <menuitem name="Dingtalk config" id="sce_dingtalk.config" parent="sce_dingtalk.menu_root" action="sce_dingtalk.action_window"/>
+    <menuitem name="Dingtalk logs" id="sce_dingtalk.logs" parent="sce_dingtalk.menu_root" action="sce_dingtalk.action_window_logs"/>
+    <!-- actions -->
+  </data>
+</odoo>
