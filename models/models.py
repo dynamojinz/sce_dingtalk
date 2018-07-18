@@ -90,7 +90,7 @@ class Dingtalk(models.Model):
     # 记录与钉钉服务器通信日志
     #--------------------------------
     def _write_log(self, name, request, data, response):
-        self.env['sce_dingtalk.log'].create({
+        self.env['sce_dingtalk.log'].sudo().create({
             'config_id': self.id,
             'name': name,
             'request': request,
