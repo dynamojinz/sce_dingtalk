@@ -34,10 +34,10 @@
                     </group>
                     <group>
                         <group>
-                            <field name="res_model_id"/>
+                            <field name="res_model_ids" widget="many2many_tags"/>
                         </group>
                         <group>
-                            <field name="res_model"/>
+                            <field name="test_mode"/>
                         </group>
                     </group>
                     <group>
@@ -48,7 +48,7 @@
                         <field name="corpsecret"/>
                         <field name="token"/>
                         <field name="agentid"/>
-                            <field name="test_user"/>
+                        <field name="test_user"/>
                     </group>
                     <group>
                         <field name="qrcode_image" widget="image"/>

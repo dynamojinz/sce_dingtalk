@@ -17,6 +17,25 @@
             });
             </script>
         </template>
+        <template id="oauth_redirect">
+            <html>
+                <head>
+            <script src="http://g.alicdn.com/dingding/dingtalk-pc-api/2.3.1/index.js"></script>
+            <script>
+                DingTalkPC.biz.util.openLink({
+                    url: "<t t-raw='url'/>", //要打开链接的地址
+                    onSuccess : function(info) {
+                    },
+                    onFail : function(err) {
+                    }
+                });
+            </script>
+            </head>
+            <body>
+                请在弹开的浏览器中查看文档内容
+            </body>
+            </html>
+        </template>
          <!--<template id="object"> -->
            <!--<h1><t t-esc="object.display_name"/></h1> -->
            <!--<dl> -->

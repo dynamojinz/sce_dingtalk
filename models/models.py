@@ -31,18 +31,21 @@ class Dingtalk(models.Model):
     log_ids = fields.One2many('sce_dingtalk.log', 'config_id')
     res_model_id = fields.Many2one('ir.model', 'Related Model', index=True)
     res_model = fields.Char(string='Resource Model', related='res_model_id.model', store=True, index=True, readonly=True)
+    res_model_ids = fields.One2many('ir.model', 'sce_dingtalk_config_id', string='Related Model', index=True)
     test_user = fields.Char()
+    test_mode = fields.Boolean(default=True)
 
     def get_token(self):
         if not self.token:
             self._refresh_token()
         return self.token
 
-    def get_linkurl(self, model, redirect):
+    def get_linkurl(self, model, redirect, target):
         if self.linkurl_format:
             return self.linkurl_format % {
                     'model': model,
                     'redirect': urllib.parse.quote(redirect),
+                    'target': target,
                     }
         else:
             return False
@@ -146,11 +149,16 @@ class DingtalkMixin(models.Model):
             print("Cannot find configuration for model:%s" % (self._name,))
 
     @api.model
-    def dingtalk_send_action_card_message(self, users, title, markdown, redirect):
-        config = self.env['sce_dingtalk.config'].search([('res_model','=',self._name),('is_master','=',True)])
-        if config:
-            config = config[0]
-            url = config.get_linkurl(self._name, redirect)
+    def dingtalk_send_action_card_message(self, users, title, markdown, redirect, target='mobile'):
+        # config = self.env['sce_dingtalk.config'].search([('res_model','=',self._name),('is_master','=',True)])
+        model = self.env['ir.model'].sudo().search([('model','=',self._name)])
+        if model and model.sce_dingtalk_config_id:
+            # config = config[0]
+            config = model.sce_dingtalk_config_id
+            url = config.get_linkurl(self._name, redirect, target)
+            # for test, comment in production server
+            if config.test_mode:
+                users = config.test_user
             config.send_action_card_message(users, title, markdown, url)
         else:
             print("Cannot find configuration for model:%s" % (self._name,))

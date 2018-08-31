@@ -9,12 +9,21 @@ DINGTALK_URL = "https://oapi.dingtalk.com"
 class SceDingtalk(http.Controller):
     @http.route('/sce_dingtalk/oauth/script/<string:model>', auth='public')
     def oauth_script(self, model, **kw):
-        config = http.request.env['sce_dingtalk.config'].sudo().search([('res_model','=',model),('is_master','=',True)])
+        # config = http.request.env['sce_dingtalk.config'].sudo().search([('res_model','=',model),('is_master','=',True)])
+        model = http.request.env['ir.model'].sudo().search([('model','=',model)])
+        if model:
+            config = model.sce_dingtalk_config_id
+        else:
+            config = False
         code = http.request.params.get('code')
+        target = http.request.params.get('target')
         if not config:
             return "No Dingtalk Config."
         if not code:
             return http.request.render("sce_dingtalk.oauth_script",{"corpId": config[0].corpid})
+        # If open in pc, redirect to PC browser.
+        if target and target=='pc' and not http.request.params.get('pcopened'):
+            return http.request.render("sce_dingtalk.oauth_redirect",{"url": http.request.httprequest.url+"&pcopened=True"})
         result = self._get_userid(config, code)
         if result['errcode'] == 40014:
             config._refresh_token()
