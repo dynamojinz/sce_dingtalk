@@ -50,6 +50,21 @@ class Dingtalk(models.Model):
         else:
             return False
 
+    def _get_userid(self, authcode):
+        url = "%s/user/getuserinfo?access_token=%s&code=%s" % (DINGTALK_URL, self.get_token(), authcode)
+        req = urllib.request.Request(url)
+        req.add_header('Content-Type', 'application/json')
+        resp = urllib.request.urlopen(req).read()
+        return json.loads(resp.decode())
+
+    def get_userid(self, authcode):
+        result = self._get_userid(authcode)
+        print(result)
+        if result['errcode'] == 40014:
+            self._refresh_token()
+            result = self._get_userid(authcode)
+        return result.get("userid", False)
+
     def send_message(self, user, message):
         raw_message = self._form_message(user, message)
         return self._send_data(user, raw_message)
@@ -141,7 +156,7 @@ class DingtalkMixin(models.Model):
 
     @api.model
     def dingtalk_send_message(self, users, message):
-        config = self.env['sce_dingtalk.config'].search([('res_model','=',self._name),('is_master','=',True)])
+        config = self.env['sce_dingtalk.config'].search([('res_model_ids','=',self._name),('is_master','=',True)])
         if config:
             config = config[0]
             config.send_message(users, message)
@@ -162,6 +177,22 @@ class DingtalkMixin(models.Model):
             config.send_action_card_message(users, title, markdown, url)
         else:
             print("Cannot find configuration for model:%s" % (self._name,))
+
+    @api.model
+    def dingtalk_get_user(self, authcode):
+        config = self.sudo().env['sce_dingtalk.config'].search([('res_model_ids','=',self._name),('is_master','=',True)])
+        if config:
+            config = config[0]
+            userid = config.get_userid(authcode)
+            if userid:
+                login = "%s@sce-re.com" % (userid,)
+                print(login)
+                return self.sudo().env['res.users'].search([('login','=',login)])
+            else:
+                print("Cannot find user with authcode.")
+        else:
+            print("Cannot find configuration for model:%s" % (self._name,))
+        return None
 
 
 
