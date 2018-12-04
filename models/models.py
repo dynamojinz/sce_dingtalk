@@ -59,11 +59,19 @@ class Dingtalk(models.Model):
 
     def get_userid(self, authcode):
         result = self._get_userid(authcode)
-        print(result)
+        # print(result)
         if result['errcode'] == 40014:
             self._refresh_token()
             result = self._get_userid(authcode)
         return result.get("userid", False)
+
+    def get_userinfo(self, userid):
+        url = "%s/user/get?access_token=%s&userid=%s" % (DINGTALK_URL, self.get_token(), userid)
+        req = urllib.request.Request(url)
+        req.add_header('Content-Type', 'application/json')
+        resp = urllib.request.urlopen(req).read()
+        return json.loads(resp.decode())
+
 
     def send_message(self, user, message):
         raw_message = self._form_message(user, message)
@@ -186,8 +194,16 @@ class DingtalkMixin(models.Model):
             userid = config.get_userid(authcode)
             if userid:
                 login = "%s@sce-re.com" % (userid,)
-                print(login)
-                return self.sudo().env['res.users'].search([('login','=',login)])
+                user = self.sudo().env['res.users'].search([('login','=',login)])
+                if not user:
+                    userinfo = config.get_userinfo(userid)
+                    # Create user.. Specific for SCE
+                    if userinfo.get("errmsg")=='ok' and userinfo.get("jobnumber") and userinfo.get("jobnumber").isdigit() and len(userinfo.get("jobnumber"))==6:
+                        user = self.sudo().env['res.users'].create({
+                            'name': userinfo.get('name'),
+                            'login': login,
+                        })
+                return user
             else:
                 print("Cannot find user with authcode.")
         else:
