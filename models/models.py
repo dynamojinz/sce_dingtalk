@@ -162,7 +162,7 @@ class Dingtalk(models.Model):
         return msges
 
     def _asyn_send_message(self, data):
-        send_url = "%s/topapi/message/corpconversation/asyncsend?access_token_v2=%s" % (DINGTALK_URL, self.get_token())
+        send_url = "%s/topapi/message/corpconversation/asyncsend_v2?access_token=%s" % (DINGTALK_URL, self.get_token())
         request = urllib.request.Request(url=send_url,data=data)
         request.add_header('Content-Type', 'application/json')
         response = urllib.request.urlopen(request).read()
